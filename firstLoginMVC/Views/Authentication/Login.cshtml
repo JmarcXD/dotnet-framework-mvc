@@ -1,0 +1,63 @@
+﻿@model firstLoginMVC.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+{
+    @Html.AntiForgeryToken(); //Seguridad cuando renderiza y genera un token
+
+    <div>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </div><div>
+        <button type="submit">Login</button>
+    </div>
+
+    if (ViewBag.Error != null)
+    {
+        <p style="color:red;">@ViewBag.Error</p>
+    }
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@*@{
+        ViewBag.Title = "Login";
+    }
+
+    <h2>Login</h2>
+
+    <form action="/Authentication/Login" method="post">
+        <label><b>Usuario</b></label>
+        <input type="text" name="Name" placeholder="Usuario" /><br />
+        <label><b>Password</b></label>
+        <input type="password" name="Password" placeholder="Password" /><br /><br />
+        z
+        <button type="submit">Login</button>
+
+        @if (ViewBag.Error != null)
+        {
+            <p style="color:red;">@ViewBag.Error</p>
+        }
+    </form>
+
+
+    using (Html.BeginForm("Login", "Authenticaction", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken() //Seguridad
+
+
+
+    }*@
+
